@@ -96,6 +96,15 @@ if DEBUG:
 else:
     FIELD_ENCRYPTION_KEY = env.get_value('PROD_FIELD_ENCRYPTION_KEY')
 
+import sys as _sys
+_raw = FIELD_ENCRYPTION_KEY or ''
+print(
+    f"[FIELD_ENCRYPTION_KEY DIAG] DEBUG={DEBUG} "
+    f"len={len(_raw)} repr={_raw!r}",
+    file=_sys.stderr,
+    flush=True,
+)
+
 # # Decode the base64-encoded string to bytes with UTF-8 encoding
 # FIELD_ENCRYPTION_KEY = base64.b64decode(FIELD_ENCRYPTION_KEY_str)
 
